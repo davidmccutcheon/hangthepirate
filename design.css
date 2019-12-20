@@ -1,0 +1,82 @@
+body {
+    position: static;
+    padding-top: 100px;
+    background-color: black;
+    font-family: Optima;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: greenyellow;
+}
+
+.instructions, .livedata {
+    position: relative;
+    color: white;
+    bottom: 315px;
+    left: 43%;
+}
+
+#categoryWhat, #statedCategory {
+    padding-left: 185px;
+}
+
+#guessesWhat {
+    padding-left: 410px;
+}
+
+#guessesRemaining {
+    padding-left: 450px;
+}
+
+#category, #restart, .forGuessing {
+    position: relative;
+    bottom: 335px;
+    left: 65%
+}
+
+#gallows {
+    position: relative;
+    left: 15%;
+}
+
+#progress {
+    color: white;
+    position: relative;
+    left: 55%;
+    bottom: 320px;
+}
+
+#oops {
+    position: relative;
+    left: 50%;
+    bottom: 100px;
+}
+
+#userGuess {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: large;
+    text-transform: uppercase;
+    font-family: "Courier New";
+    position: relative;
+    left: 60%;
+    bottom: 300px;
+}
+
+#guessButton {
+    position: relative;
+    left: 54%;
+    bottom: 260px;
+}
+
+#title {
+    color: bisque;
+    text-align: center;
+    position: static;
+    padding-bottom: 7px;
+}

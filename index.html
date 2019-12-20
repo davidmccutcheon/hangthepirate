@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guesses n' Gallows</title>
+    <script src = "script.js"></script>
+    <link rel="stylesheet" href="design.css">
+</head>
+
+<header>
+    <h1 id = "title">Guesses n' Gallows</h1>
+</header>
+
+<body>
+
+    <img id = "gallows" src = image/hangedSkull.jpg width = 300>
+
+    <div class = "instructions">Choose yer category wisely...</div>
+        <select id = "category">
+            <option value = "0" id = "boats">Boats</option>
+            <option value = "1" id = "knots">Knots</option>
+            <option value = "2" id = "pirates">Famous Pirates</option>
+            <option value = "3" id = "rum">Rum</option>
+            <option value = "4" id = "weapons">Weapons</option>
+            <option value = "5" id = "sailing">Savvy Sailin'</option>
+            <option value = "6" id = "geography">Where y'arr?</option>
+        </select>
+    <button id="restart" onclick="startGame()">TAKE YER CHANCES</button>
+    <div id = "categoryWhat" class = "instructions">Yer category be...</div>
+    <h1 id = "statedCategory" class = "instructions"></h1>
+
+    <div id = "guessesWhat" class = "instructions">Guesses left:</div>
+    <div id = "guessesRemaining" class = "livedata"></div>
+    <div id = "letteredWhat" class = "instructions">Ye've come this far already:</div>
+    <div id = "guessedLetters" class = "livedata"></div>
+
+    <div id = "oops" class = "error"></div>
+
+    <h1 id = "progress"></h1>
+
+    <div id = "inputLabel" class = "instructions">Put yer guess in here!</div>
+    <input id = "userGuess" class = "forGuessing" maxlength="1">
+    <button id = "guessButton" class = "forGuessing" onclick="guessLetter()">MAKE A GAMBLE</button>
+
+</body>
+</html>
