@@ -118,12 +118,12 @@ function guessLetter() {
         }
 
         if (progress == (word.toUpperCase())) {
-            youWin();
             gameIsActive = false;
+            youWin();
             document.getElementById("gallows").src = resultPic;
         } else if (guessesRemaining <= 0) {
-            youLose();
             gameIsActive = false;
+            youLose();
         }
 
     } else {
