@@ -9,6 +9,7 @@ var resultPic = "image/hangedSkull.jpg";
 var PIRATE_PROGRESS = ["image/hangedSkull.jpg","image/PIRATE_PROGRESS[1].png", "image/PIRATE_PROGRESS[2].png", "image/PIRATE_PROGRESS[3].png", "image/PIRATE_PROGRESS[4].png", "image/PIRATE_PROGRESS[5].png", "image/PIRATE_PROGRESS[6].png", "image/PIRATE_PROGRESS[7].png", "image/PIRATE_PROGRESS[8].png", "image/PIRATE_PROGRESS[9].png", "image/PIRATE_PROGRESS[10].png"];
 var guessesRemaining = 10;
 var guessedLetters = [];
+var gameIsActive = false;
 
 var BOATS = ["Brig", "Clipper", "Collier", "Frigate", "Galleon", "Ketch", "ManOfWar", "Schooner", "Tallship", "Windjammer", "Yawl"];
 var KNOTS = ["FigureEight", "Bowline", "Reef", "Butterfly", "SheetBend", "CloveHitch", "ChainSplice", "CarrickBend"];
@@ -41,6 +42,7 @@ function startGame() {
     guessesRemaining = 10;
     guessedLetters = [];
     var howsItHanging = 1;
+    gameIsActive = true;
 
     document.getElementById("gallows").src = meanwhileAtTheGallows(howsItHanging);
     document.getElementById("statedCategory").innerHTML = category[0];
@@ -64,13 +66,15 @@ function meanwhileAtTheGallows (index) {
 }
 
 function guessLetter() {
-    if (document.getElementById("progress").innerHTML = makeBlanks(word)) {
+    if (gameIsActive == true) {
         var letter = (document.getElementById("userGuess").value).toUpperCase();
         document.getElementById("userGuess").value = "";
         var howsItHanging = (11 - guessesRemaining);
 
         if (isANumber(letter) == true) {
             document.getElementById("oops").innerHTML = "Well, ye don't have to read ALL that well to know that's a NUMBER!";
+        } else if (isALetter(letter) == false) {
+            document.getElementById("oops").innerHTML = "Arr, I dunno what that says... but ye can be sure it isn't in here!"
         } else if (letter.length == 0) {
             document.getElementById("oops").innerHTML = "Don't give up so fast! Put in anything ye like."
         } else if (letterIsGuessed(letter) == true) {
@@ -115,12 +119,15 @@ function guessLetter() {
 
         if (progress == (word.toUpperCase())) {
             youWin();
-            guessesRemaining = 0;
+            gameIsActive = false;
             document.getElementById("gallows").src = resultPic;
         } else if (guessesRemaining <= 0) {
             youLose();
+            gameIsActive = false;
         }
 
+    } else {
+        document.getElementById("oops").innerHTML = "Ye coward... TAKE YER CHANCES first!!";
     }
 }
 
@@ -128,6 +135,17 @@ function letterIsGuessed(item) {
     var confirmation = false;
     for (var i = 0; i < guessedLetters.length; i++) {
         if (guessedLetters[i] == item) {
+            confirmation = true;
+        }
+    }
+    return confirmation;
+}
+
+function isALetter(char) {
+    var confirmation = false;
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    for (var i = 0; i < letters.length; i++) {
+        if (letters[i] == char) {
             confirmation = true;
         }
     }
